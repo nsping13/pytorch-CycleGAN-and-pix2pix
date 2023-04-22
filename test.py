@@ -78,7 +78,8 @@ if __name__ == '__main__':
         for key in data:
             if (torch.is_tensor(data[key])==True):
                 data[key] = torch.zeros(data[key].shape)
-                data[key][:,:,data[key].shape[2]//2-4:data[key].shape[2]//2+4,data[key].shape[2]//2-4:data[key].shape[2]//2+4] = 1.0
+#                 data[key][:,:,data[key].shape[2]//2-4:data[key].shape[2]//2+4,data[key].shape[2]//2-4:data[key].shape[2]//2+4] = 1.0
+                data[key][:,:,data[key].shape[2]//2,data[key].shape[2]//2] = 1.0
 
         model.set_input(data)  # unpack data from data loader
         
