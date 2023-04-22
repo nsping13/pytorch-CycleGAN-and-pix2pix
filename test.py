@@ -39,6 +39,43 @@ try:
 except ImportError:
     print('Warning: wandb package cannot be found. The option "--use_wandb" will result in error.')
 
+def count_layers(model):
+  convolution_layers = 0
+  non_linearity_layers = 0
+  linear_layers = 0 
+  layer_norm_layers = 0 
+  pool_layers = 0
+  
+  for name, m in model.named_modules():
+      if len(list(m.named_modules()))==1:
+          print(name,"\t",m)
+          if 'Conv' in str(m):
+            print(m)
+            convolution_layers += 1 
+          if 'GELU' in str(m):
+            print(m)
+            non_linearity_layers += 1 
+          if 'ReLU' in str(m):
+            print(m)
+            non_linearity_layers += 1 
+          if 'SiLU' in str(m):
+            print(m)
+            non_linearity_layers += 1 
+          if 'Linear' in str(m):
+            print(m)
+            linear_layers += 1 
+          if ('Norm') in str(m):
+            print(m)
+            layer_norm_layers += 1 
+          if ('Pool') in str(m):
+            print(m)
+            pool_layers += 1 
+
+
+  return convolution_layers,non_linearity_layers,linear_layers,layer_norm_layers,pool_layers
+
+
+
 
 if __name__ == '__main__':
     opt = TestOptions().parse()  # get test options
@@ -83,6 +120,8 @@ if __name__ == '__main__':
 
         model.set_input(data)  # unpack data from data loader
         print(model)
+        convolution_layers,non_linearity_layers,linear_layers,layer_norm_layers,pool_layers = count_layers(model)
+
         
         model.test()           # run inference
         visuals = model.get_current_visuals()  # get image results
