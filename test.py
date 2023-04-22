@@ -76,8 +76,8 @@ if __name__ == '__main__':
         
         print(type(data))
         for key in data:
-            print(key)
-            if type(data[key]) != list():
+            print(type(data[key])
+            if torch.is_tensor(data[key]):
                 data[key] = torch.zeros(data[key].shape)
                 data[key][:,:,data[key].shape[2]//2-4:data[key].shape[2]//2+4,data[key].shape[2]//2-4:data[key].shape[2]//2+4] = 1.0
 
