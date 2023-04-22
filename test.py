@@ -77,7 +77,7 @@ if __name__ == '__main__':
         print(type(data))
         for key in data:
             print(key)
-            print(data(key))
+            print(data[key])
         model.set_input(data)  # unpack data from data loader
         
         model.test()           # run inference
