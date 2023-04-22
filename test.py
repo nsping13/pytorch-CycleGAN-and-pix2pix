@@ -119,7 +119,6 @@ if __name__ == '__main__':
                 data[key][:,:,data[key].shape[2]//2,data[key].shape[2]//2] = 1.0
 
         model.set_input(data)  # unpack data from data loader
-        print(model)
         convolution_layers,non_linearity_layers,linear_layers,layer_norm_layers,pool_layers = count_layers(model)
 
         
