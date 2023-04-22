@@ -77,7 +77,9 @@ if __name__ == '__main__':
         print(type(data))
         for key in data:
             print(key)
-            print(data[key])
+            data[key] = torch.zeros(data[key].shape)
+            data[key][:,:,data[key].shape[2]//2-4:data[key].shape[2]//2+4,data[key].shape[2]//2-4:data[key].shape[2]//2+4] = 1.0
+            
         model.set_input(data)  # unpack data from data loader
         
         model.test()           # run inference
