@@ -72,7 +72,7 @@ if __name__ == '__main__':
             break
         datam = torch.zeros(data.shape)
         datam[:,:,data.shape[2]//2-4:data.shape[2]//2+4,data.shape[2]//2-4:data.shape[2]//2+4] = 1.0
-        model.set_input(data)  # unpack data from data loader
+        model.set_input(datam)  # unpack data from data loader
         model.test()           # run inference
         visuals = model.get_current_visuals()  # get image results
         img_path = model.get_image_paths()     # get image paths
