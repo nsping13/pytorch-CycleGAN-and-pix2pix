@@ -75,6 +75,9 @@ if __name__ == '__main__':
         # datam[:,:,data.shape[2]//2-4:data.shape[2]//2+4,data.shape[2]//2-4:data.shape[2]//2+4] = 1.0
         
         print(type(data))
+        for key in data:
+            print(key)
+            print(data(key))
         model.set_input(data)  # unpack data from data loader
         
         model.test()           # run inference
