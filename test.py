@@ -117,7 +117,7 @@ if __name__ == '__main__':
                 data[key] = torch.zeros(data[key].shape)
 #                 data[key][:,:,data[key].shape[2]//2-4:data[key].shape[2]//2+4,data[key].shape[2]//2-4:data[key].shape[2]//2+4] = 1.0
                 data[key][:,:,data[key].shape[2]//2,data[key].shape[2]//2] = 1.0
-                data[key] = torch.roll(data[key],15,2)
+                data[key] = torch.roll(data[key],155,2)
 
         model.set_input(data)  # unpack data from data loader
         convolution_layers,non_linearity_layers,linear_layers,layer_norm_layers,pool_layers = count_layers(model.netG)
