@@ -108,9 +108,7 @@ if __name__ == '__main__':
     for i, data in enumerate(dataset):
         if i >= opt.num_test:  # only apply our model to opt.num_test images.
             break
-        # datam = torch.zeros(data.shape)
-        # datam[:,:,data.shape[2]//2-4:data.shape[2]//2+4,data.shape[2]//2-4:data.shape[2]//2+4] = 1.0
-        
+
         #print(type(data))
         #for key in data:
         #    if (torch.is_tensor(data[key])==True):
